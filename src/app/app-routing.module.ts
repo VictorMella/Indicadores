@@ -15,10 +15,7 @@ const routes: Routes = [
     path: 'detalles',
     loadChildren: () => import('./detalle/detalle.module').then(mod => mod.DetalleModule)
   },
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(mod => mod.HomeModule)
-  },
+
   {
     path: '**',
     redirectTo: '/indicadores',

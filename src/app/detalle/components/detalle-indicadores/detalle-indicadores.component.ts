@@ -14,7 +14,7 @@ export class DetalleIndicadoresComponent  {
   constructor() { }
 
   onVerDetalle({ fecha }, codigo: string): void {
-    this.handleSeeDetails.emit({fecha, codigo})
+    this.handleSeeDetails.emit({ fecha, codigo })
   }
 
 }

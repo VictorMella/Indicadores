@@ -42,6 +42,19 @@ export class AdminService {
       )
   }
 
+  public getDetalleIndicador(codigo: string, fecha: string): Observable<any> {
+    return this.http.get(`${environment.api}/${codigo}/${fecha}`)
+      .pipe(
+        map((resp :any) => {
+          return {
+            ok: true,
+            data: resp,
+          }
+        }),
+        catchError(this.getError)
+      )
+  }
+
   private transformDataCountries(data: any): Array<IIndicators> {
     this.utils.typeIndicators().forEach(item => {
       this.indicatorLs.push(data[item])

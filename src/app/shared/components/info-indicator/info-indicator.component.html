@@ -1,0 +1,25 @@
+<div class="info-indicator">
+  <ngx-skeleton-loader *ngIf="loading" count="5" appearance="" animation="progress-dark">
+  </ngx-skeleton-loader>
+  <div *ngIf="!loading">
+    <h2>
+      $ {{valor}}
+    </h2>
+  </div>
+  <div class="info-indicator-data"  *ngIf="!loading">
+    <div class="section">
+      <label class="form-label"> Nombre</label>
+      <input class="form-control" readonly [(ngModel)]="nombre">
+    </div>
+    <div class="section">
+      <label class="form-label"> Fecha</label>
+      <input class="form-control" readonly [(ngModel)]="fecha">
+    </div>
+
+    <div class="section">
+      <label class="form-label"> Unidad de medida</label>
+      <input class="form-control" readonly [(ngModel)]="medida">
+    </div>
+
+  </div>
+</div>

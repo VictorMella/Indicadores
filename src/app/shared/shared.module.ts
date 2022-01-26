@@ -11,23 +11,19 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TranslateModule } from '@ngx-translate/core';
-
-import { LoaderComponent } from './components/loader/loader.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
-import { SwitchComponent } from './components/switch/switch.component';
 import { CoreModule } from '../core/core.module';
-
-
-import { ConfirmationQuestionComponent } from './components/confirmation-question/confirmation-question.component';
+import { InfoIndicatorComponent } from './components/info-indicator/info-indicator.component';
 
 @NgModule({
   declarations: [
-    LoaderComponent,
+
     ModalComponent,
     PaginatorComponent,
-    SwitchComponent,
-    ConfirmationQuestionComponent
+
+
+    InfoIndicatorComponent
   ],
   imports: [
     CommonModule,
@@ -46,15 +42,15 @@ import { ConfirmationQuestionComponent } from './components/confirmation-questio
     TranslateModule
   ],
   exports: [
-    LoaderComponent,
+
     ModalComponent,
     PaginatorComponent,
-    SwitchComponent,
+
     ReactiveFormsModule,
+    InfoIndicatorComponent,
     FormsModule,
     RatingModule,
     NgxSkeletonLoaderModule,
-    ConfirmationQuestionComponent,
     TooltipModule,
     NgSelectModule,
     BsDatepickerModule,

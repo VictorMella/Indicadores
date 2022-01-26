@@ -1,0 +1,21 @@
+@import "colors.scss";
+
+.info-indicator {
+  padding: 2rem;
+  h2{
+    text-align: center;
+    color: #5583FF;
+  }
+  &-data{
+    width: 100%;
+    .section{
+      padding: .5rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      label, input{
+        width: 160px;
+      }
+    }
+  }
+}

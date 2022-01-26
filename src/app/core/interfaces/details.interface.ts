@@ -10,4 +10,5 @@ export interface IDetails {
 export interface ISerie {
   fecha: Date
   valor: number
+  see: boolean
 }
