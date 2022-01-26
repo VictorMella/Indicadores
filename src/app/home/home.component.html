@@ -1,0 +1,207 @@
+<div class="container">
+
+  <button type="button" class="btn btn-primary" (click)="onActionAlertSuccess()">
+    Alert success <i class="fal fa-home"></i>
+  </button>
+
+  <button type="button" class="btn btn-danger" (click)="onActionAlertError()">
+    Alert danger <i class="fal fa-home"></i>
+  </button>
+
+  <button type="button" class="btn button-success" (click)="onOpenModal(modalExample)">
+    Open Modal <i class="fal fa-home"></i>
+  </button>
+  <button type="button" class="btn button-success" (click)="onOpenModalUploadFile(modalUploadFile)">
+    Upload File <i class="fal fa-paperclip"></i>
+  </button>
+  <br>
+  <button type="button" class="btn button-primary" (click)="onOpenModalConfirmationQuestion(modalConfirmation)">
+    {{'modal-confirmacion-pregunta' |translate}}<i class="fas fa-exclamation-circle"></i>
+  </button>
+  <br>
+  <br>
+  <div class="form-group">
+    <input type="text" placeholder="Revisar porque no funciona autofocus" auto-focus class="form-control">
+  </div>
+  <br>
+  <br>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th sortable-column [content]="'col1' | translate" [sortable]="1" [active]="true" direction='asc'
+          (sort)="onHandleSortColumn($event)"></th>
+        <th sortable-column [content]="'col2' | translate" [sortable]="2" (sort)="onHandleSortColumn($event)"></th>
+        <th sortable-column [content]="'col3' | translate" [sortable]="3" (sort)="onHandleSortColumn($event)"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <p>{{1234 | currency: 0: 'CLP'}}</p>
+        </td>
+        <td>
+          <p>{{1234.234 | currency: 2: 'USD'}}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ngx-skeleton-loader count="5" appearance="" animation="progress-dark">
+  </ngx-skeleton-loader>
+  <app-paginator class="width__100"
+    [config]="pagination"
+    (handleChangePagination)="onHandleChangePagination($event)">
+  </app-paginator>
+  <br>
+
+
+  <app-switch
+    [active]="false"
+    [activeLoading]="true"
+    [disable]="false"
+    (handleToggleSwitch)="onHandleToggleSwitch($event)"> </app-switch>
+  <br>
+
+
+
+  <form class="form-container" [formGroup]="form" (submit)="onSubmitForm()">
+    <div class="item">
+      <label for="type" class="form-label"><strong>Input:Text<span
+            class="color-red"><strong>*</strong></span></strong></label>
+      <input [class.msgErrorFields]="onValidateErrorFields('text')" type="text" class="form-control"
+        formControlName="text">
+      <span class="validation-message" *ngIf="onValidateErrorFields('text')"> * mensaje validación </span>
+    </div>
+    <div class="item">
+      <label for="type" class="form-label"><strong>Input:Number<span
+            class="color-red"><strong>*</strong></span></strong></label>
+      <input [class.msgErrorFields]="onValidateErrorFields('number')" type="number" formControlName="number"
+        class="form-control" prevent-key-number>
+      <span class="validation-message" *ngIf="onValidateErrorFields('number')"> * mensaje validación </span>
+    </div>
+    <div class="item">
+      <label for="currency" class="form-label"><strong>select simple<span
+            class="color-red"><strong>*</strong></span></strong></label>
+      <ngx-skeleton-loader *ngIf="false" count="1" appearance="" animation="progress-dark"
+        [theme]="{'margin-top': '1rem', 'margin-bottom': '0'}">
+      </ngx-skeleton-loader>
+      <ng-select *ngIf="!false" [clearable]="false" formControlName="selectSimple"
+        [class.msgErrorFields]="onValidateErrorFields('selectSimple')"
+        [placeholder]="'seleccione...'">
+        <ng-option *ngFor="let item of listProducts" [value]="item">{{item.name}}</ng-option>
+      </ng-select>
+      <span *ngIf="onValidateErrorFields('selectSimple')" class="validation-message"> * mensaje validación </span>
+    </div>
+    <div class="item">
+      <label for="currency" class="form-label"><strong>select multiple<span
+            class="color-red"><strong>*</strong></span></strong></label>
+      <ng-select
+        [class.msgErrorFields]="onValidateErrorFields('selectMultiple')"
+        formControlName="selectMultiple"
+        bindLabel="name"
+
+        [multiple]="true"
+        [closeOnSelect]="true"
+        [searchable]="true"
+        [clearable]="false"
+        (add)="onAddItem($event)"
+        (remove)="onRemoveItem($event)">
+      </ng-select>
+    </div>
+    <div class="item">
+      <div class="input-group">
+        <input type="text" bsDatepicker
+          formControlName="date"
+          [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD-MM-YYYY', showWeekNumbers: false, containerClass: 'theme-default' }"
+          class="form-control" id="datetime">
+        <i class="icon far fa-calendar"></i>
+      </div>
+    </div>
+    <button class="btn btn-success" type="submit">submit</button>
+    <!-- <button class="btn btn-success" type="submit"
+      [class.cursor__notallowed]="form.invalid"
+      [disabled]="form.invalid">submit</button> -->
+  </form>
+  <br>
+  <div class="item">
+    <label for="currency" class="form-label"><strong>Input:Check<span
+          class="color-red"><strong>*</strong></span></strong></label>
+    <input type="checkbox" [formControl]="fielCheck" required>
+    <span class="validation-message"> * mensaje validación </span>
+  </div>
+
+</div>
+
+<ng-template #modalExample>
+  <app-modal
+    icon="fas fa-home"
+    [title]="'Title modal'"
+    [actionSuccess]="'action name'"
+    [actionDefault]="'close'"
+    [nivel]="1">
+    <h1> Content Modal</h1>
+    <button class="btn btn-primary" (click)="onOpenSecondModal(modal2Example)"> open second modal</button>
+  </app-modal>
+</ng-template>
+
+<ng-template #modal2Example>
+  <app-modal
+    icon="fas fa-home"
+    [title]="'second modal'"
+    [actionSuccess]="'action name'"
+    [actionDefault]="'close'"
+    [nivel]="2">
+    <h1> Content Modal</h1>
+  </app-modal>
+</ng-template>
+
+<ng-template #modalUploadFile>
+  <app-modal
+    icon="fal fa-paperclip"
+    [title]="'Adjuntar archivos'"
+    [actionSuccess]="'Aceptar'"
+    [nivel]="1">
+    <div class="padding_1rem">
+      <app-upload-files
+        [activeDownloadTemplate]="true"
+        [activeLoading]="activeLoadingUploadFile"
+        (handleUploadFile)="onHandleUploadFile($event)">
+      </app-upload-files>
+      <app-table-uploaded-files
+        [files]="filesTest"
+        [activeLoading]="false"
+        (handleOpenModalViewFile)="onHandleOpenModalViewFile($event, modalViewFile)"
+        (handleDownloadFile)="onHandleDownloadFile($event)"
+        (handleDeleteFile)="onOpenModalConfirmationDeleteFile($event, modalConfirmation)"
+        (handleSortColumn)="onHandleSortColumnPreQuoteFiles($event)">
+      </app-table-uploaded-files>
+    </div>
+  </app-modal>
+</ng-template>
+
+<ng-template #modalConfirmation>
+  <app-modal
+    icon="fas fa-exclamation-circle"
+    customClass="warning"
+    [title]="'Quitar producto/servicio de cotización'"
+    [actionDefault]="'Cancelar'"
+    [actionSuccess]="'Confirmar'"
+    [activeLoading]="false"
+    (handleConfirmActionSuccess)="onHandleConfirm()">
+    <app-confirmation-question
+      icon="fas fa-exclamation-circle"
+      [question]="'¿Está seguro de quitar producto/servicio de cotización?'">
+    </app-confirmation-question>
+  </app-modal>
+</ng-template>
+
+<ng-template #modalViewFile>
+  <app-modal
+    [icon]="fileToShow.icon"
+    [title]="fileToShow.nameAssigneedByUser"
+    [nivel]="2"
+    (handleConfirmActionSuccess)="onHandleCloseModalViewFile()">
+    <app-view-file
+      [infoFile]="fileToShow"></app-view-file>
+  </app-modal>
+</ng-template>

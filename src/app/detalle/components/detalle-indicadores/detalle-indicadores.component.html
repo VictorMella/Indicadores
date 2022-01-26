@@ -1,0 +1,29 @@
+
+  <h2 *ngIf="!loading">{{indicatorDetail.nombre}}</h2>
+  <ngx-skeleton-loader *ngIf="loading" count="1" appearance="" animation="progress-dark">
+  </ngx-skeleton-loader>
+
+
+  <table class="table" *ngIf="!loading">
+    <thead>
+      <tr>
+        <th> Fecha de consulta</th>
+        <th> Valor</th>
+        <th> Detalle</th>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let item of indicatorDetail.serie">
+        <td class="tddate">
+          <p>{{item.fecha | date: 'dd-MM-yyyy': 'UTC'}}</p>
+        </td>
+        <td class="tdnumber">
+          <p>{{item.valor}}</p>
+        </td>
+        <td class="tdbutton">
+          <i class="fal fa-info-circle" (click)="onVerDetalle(item, indicatorDetail.codigo)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ngx-skeleton-loader *ngIf="loading" count="5" appearance="" animation="progress-dark">
+  </ngx-skeleton-loader>

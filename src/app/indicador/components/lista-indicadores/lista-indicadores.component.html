@@ -1,0 +1,39 @@
+<table class="table" *ngIf="indicatorsList.length > 0 && !loading">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th> Descripción</th>
+      <th> Fecha de consulta</th>
+      <th> Unidad de medida</th>
+      <th> Valor</th>
+      <th> Detalle</th>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let item of indicatorsList">
+      <td class="tdtext">
+        <p>{{item.codigo}}</p>
+      </td>
+      <td class="tdtext">
+        <p>{{item.nombre}}</p>
+      </td>
+      <td class="tddate">
+        <p>{{item.fecha | date: 'dd-MM-yyyy': 'UTC'}}</p>
+      </td>
+      <td class="tdtext">
+        <p>{{item.unidad_medida}}</p>
+      </td>
+      <td class="tdnumber">
+        <p>{{item.valor}}</p>
+      </td>
+      <td class="tdbutton">
+        <button class="btn button-success" (click)="onVerDetalle(item)" > Ver detalle</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ngx-skeleton-loader *ngIf="loading" count="5" appearance="" animation="progress-dark">
+</ngx-skeleton-loader>
+<app-paginator class="width__100"
+  [config]="pagination"
+  (handleChangePagination)="onHandleChangePagination($event)">
+</app-paginator>

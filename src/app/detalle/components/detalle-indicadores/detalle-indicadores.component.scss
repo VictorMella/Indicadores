@@ -1,0 +1,12 @@
+.table{
+  width: 50%;
+  margin: 1rem auto 1rem 0;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin: 2rem 1rem;
+  }
+  .fa-info-circle{
+    color: #5583FF;
+    font-size: 1.5rem;
+  }
+}

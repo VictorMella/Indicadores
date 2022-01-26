@@ -1,0 +1,9 @@
+<div class="switch-container">
+  <div class="switch"
+    [class.active]="active"
+    [class.disabled]="disable"
+    (click)="onToggleSwitch()">
+    <span></span>
+  </div>
+  <i *ngIf="activeLoading" class="fad fa-spinner fa-pulse margin-left__0_5rem"></i>
+</div>

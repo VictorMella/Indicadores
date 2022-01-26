@@ -1,0 +1,17 @@
+@import "colors.scss";
+
+.modal-header {
+  color: #717171;
+  &.warning {
+    background-color: $color-yellow;
+    color: $color-white;
+  }
+  &.bank {
+    background:rgba(1, 28, 77, 1);;
+    color: $color-white;
+  }
+}
+
+.modal-footer {
+  background-color: #efefef;
+}

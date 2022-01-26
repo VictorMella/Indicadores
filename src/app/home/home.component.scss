@@ -1,0 +1,22 @@
+@import "colors.scss";
+
+.form-container {
+  display: flex;
+  align-items: center;
+  .item {
+    padding: 0 1rem;
+    &:nth-child(5) {
+      display: flex;
+      align-items: center;
+      .input-group {
+        align-items: center;
+        .icon {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+    .msgErrorFields {
+      border-color: $color-red !important
+    }
+  }
+}

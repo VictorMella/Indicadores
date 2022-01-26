@@ -1,0 +1,9 @@
+<div class="contains">
+  <h1>Indicadores del banco de chile</h1>
+  <app-lista-indicadores  [indicatorsList]="indicatorsList"
+                          [loading]="loading"
+                          [pagination]="paginationSearch"
+                          (handleChangePagination)="onHandleChangePaginationSearch($event)"
+                          (handleSeeDetails)="onHandleSeeDetails($event)"
+  ></app-lista-indicadores>
+</div>
