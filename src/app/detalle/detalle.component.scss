@@ -2,10 +2,21 @@
 .contains{
   width: 80%;
   margin: 2rem auto;
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    .indicators, .grafics{
+      width: 100%;
+    }
+  }
   a{
     text-decoration: none;
   }
   h1{
     padding: 1rem;
+  }
+  .indicators, .grafics{
+    width: 50%;
   }
 }

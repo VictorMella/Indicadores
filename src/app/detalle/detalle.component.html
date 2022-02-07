@@ -1,18 +1,20 @@
 <div class="contains">
-  <a routerLink="indicadores"><i class="fas fa-angle-left"></i>  Indicadores</a>
-  <h1>Detalle del indicador</h1>
-  <app-detalle-indicadores  [indicatorDetail]="indicatorDetail"
-                            [loading]="loading"
-                            (handleSeeDetails)="onHandleSeeDetails($event)"
-  ></app-detalle-indicadores>
-</div>
-<div class="contains">
-  <a routerLink="indicadores"><i class="fas fa-angle-left"></i>  Indicadores</a>
-  <h1>Detalle del indicador</h1>
-  <app-graficos   [indicatorDetail]="indicatorDetail"
-                  [results]="grafics"
-                  (handleSeeDetails)="onHandleSeeDetailsIndicators($event)"
-  ></app-graficos>
+  <div class="indicators">
+    <a routerLink="indicadores"><i class="fas fa-angle-left"></i>  Indicadores</a>
+    <h1>Detalle del indicador</h1>
+    <app-detalle-indicadores  [indicatorDetail]="indicatorDetail"
+                              [loading]="loading"
+                              (handleSeeDetails)="onHandleSeeDetails($event)"
+    ></app-detalle-indicadores>
+  </div>
+  <div class="grafics">
+    <h1 style="margin-top: 2rem; margin-bottom: 0px;">Gráficos</h1>
+    <app-graficos   [indicatorDetail]="indicatorDetail"
+                    [results]="grafics"
+                    [loading]="loading"
+                    (handleSeeDetails)="onHandleSeeDetailsIndicators($event)"
+    ></app-graficos>
+  </div>
 </div>
 
 

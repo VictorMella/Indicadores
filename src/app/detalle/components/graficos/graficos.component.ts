@@ -12,7 +12,8 @@ import { IDetails, ISerie } from 'src/app/core/interfaces/details.interface'
 export class GraficosComponent implements OnInit, OnChanges {
   @Input() results: ISerie[] = [];
   @Input() indicatorDetail: IDetails
-  view: any[] = [1000, 900];
+  @Input() loading: boolean
+  view: any[] = [500, 1550];
   // options
   showXAxis: boolean
   showYAxis: boolean
@@ -34,7 +35,7 @@ export class GraficosComponent implements OnInit, OnChanges {
     this.showXAxis = true
     this.showYAxis = true
     this.gradient = false
-    this.showLegend = true
+    this.showLegend = false
     this.showXAxisLabel = true
     this.yAxisLabel = 'Fecha'
     this.showYAxisLabel = true
