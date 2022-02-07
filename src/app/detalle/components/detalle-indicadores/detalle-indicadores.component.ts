@@ -17,4 +17,5 @@ export class DetalleIndicadoresComponent  {
     this.handleSeeDetails.emit({ fecha, codigo })
   }
 
+
 }

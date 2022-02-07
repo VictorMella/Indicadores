@@ -1,6 +1,6 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core'
 import { Router } from '@angular/router'
-import { IDetails } from '../core/interfaces/details.interface'
+import { IDetails, ISerie } from '../core/interfaces/details.interface'
 import { IResponse } from '../core/interfaces/response.interface'
 import { MainFactoryService } from '../core/services/main-factory.service'
 import { UtilsService } from '../core/services/utils.service'
@@ -16,6 +16,7 @@ import { DatePipe } from '@angular/common'
 export class DetalleComponent {
   codigoIndicador: string
   indicatorDetail: IDetails
+  grafics: Array<ISerie>
   loading: boolean
 
   @ViewChild('modalInformation') modalInformation: TemplateRef<any>
@@ -27,6 +28,7 @@ export class DetalleComponent {
     private mainFactory: MainFactoryService) {
     this.codigoIndicador = this.mainFactory.getData('codigoIndicador', true)
     if (this.codigoIndicador) {
+      this.grafics = []
       this.loading = true
       this.getDetalleIndicador(this.codigoIndicador)
     }
@@ -38,15 +40,17 @@ export class DetalleComponent {
     this.utils.showModal(this.modalInformation, { id: 1, class: 'modal-md' });
   }
 
+  onHandleSeeDetailsIndicators($event): void {
+    this.mainFactory.setData('infoDetail', { codigo: $event.codigo, fecha: $event.name })
+    this.utils.showModal(this.modalInformation, { id: 1, class: 'modal-md' });
+  }
+
   private getDetalleIndicador(codigo: string): void {
     this.adminService.getDetalleIndicadores(codigo)
       .subscribe((resp: IResponse) => {
         if (resp.ok) {
-          resp.data.serie.map(item => {
-            item.see = false
-            return item
-          })
           this.indicatorDetail = resp.data
+          this.grafics = this.indicatorDetail.serie
         } else {
           this.indicatorDetail = undefined
         }

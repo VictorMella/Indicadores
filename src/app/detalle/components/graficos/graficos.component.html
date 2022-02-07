@@ -1,0 +1,19 @@
+<div class="chart-container" >
+  <ngx-charts-bar-horizontal
+  *ngIf="results.length >0"
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="results"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="xAxisLabel ? true : false"
+  [showYAxisLabel]="yAxisLabel ? true : false"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  (select)="onSelect($event, indicatorDetail.codigo)"
+>
+</ngx-charts-bar-horizontal>
+</div>
+

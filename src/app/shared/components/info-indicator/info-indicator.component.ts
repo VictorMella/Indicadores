@@ -27,7 +27,7 @@ export class InfoIndicatorComponent {
       .subscribe((resp: IResponse) => {
         if (resp.ok) {
           this.fecha = this.datePipe.transform(resp.data.serie[0].fecha, 'dd-MM-yyyy', 'es')
-          this.valor = resp.data.serie[0].valor
+          this.valor = resp.data.serie[0].valor.toLocaleString()
           this.nombre = resp.data.nombre
           this.medida = resp.data.unidad_medida
         }

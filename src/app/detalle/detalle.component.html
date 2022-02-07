@@ -6,21 +6,14 @@
                             (handleSeeDetails)="onHandleSeeDetails($event)"
   ></app-detalle-indicadores>
 </div>
-
-
-<!-- <ng-template #modalInformation>
-  <app-modal
-    icon="fal fa-info-circle"
-    customClass="bank"
-    [title]="'Detalle del indicador'"
-    [actionDefault]="'Cancelar'"
-    [activeLoading]="true">
-    <app-confirmacion
-      icon="fal fa-info-circle"
-      [question]="'¿Está seguro de borrar este registro de su tarjeta de debito?'">
-    </app-confirmacion>
-  </app-modal>
-</ng-template> -->
+<div class="contains">
+  <a routerLink="indicadores"><i class="fas fa-angle-left"></i>  Indicadores</a>
+  <h1>Detalle del indicador</h1>
+  <app-graficos   [indicatorDetail]="indicatorDetail"
+                  [results]="grafics"
+                  (handleSeeDetails)="onHandleSeeDetailsIndicators($event)"
+  ></app-graficos>
+</div>
 
 
 <ng-template #modalInformation>

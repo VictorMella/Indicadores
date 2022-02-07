@@ -2,7 +2,7 @@ export interface IDetails {
   autor: string
   codigo: string
   nombre: string
-  serie: ISerie
+  serie: Array<ISerie>
   unidad_medida: string
   version: string
 }
@@ -10,5 +10,4 @@ export interface IDetails {
 export interface ISerie {
   fecha: Date
   valor: number
-  see: boolean
 }
